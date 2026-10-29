@@ -18,7 +18,10 @@ A clean, modern task management web application built with vanilla HTML, CSS, an
 - **Tablet Breakpoint (`<= 1024px`)**: Automatically collapses the left sidebar into a slide-over drawer with a backdrop overlay while keeping the main list and detail panel side-by-side.
 - **Mobile Breakpoint (`<= 768px`)**: Adapts to a single-column layout where the left navigation opens as a slide-out drawer and the **Task Overview** inspector slides up as a bottom sheet with safe-area inset support.
 
-## Getting Started
+## View in the Browser (GitHub Pages)
 
-Open `index.html` directly in any modern browser—no build tools or dependencies required.
+You can view and interact with the live project directly in your browser via GitHub Pages (no cloning or setup required):
+
+**[https://idominikbrame.github.io/usamm-ui-demo/](https://idominikbrame.github.io/usamm-ui-demo/)**
+
 
