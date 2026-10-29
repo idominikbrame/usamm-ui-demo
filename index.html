@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>usamm-ui-demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="app-shell">
+        <main class="app-container">
+            <!-- Left Sidebar: Menu -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h1>Workspace</h1>
+                    <button class="icon-btn" id="menu-toggle" aria-label="Toggle Menu">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round">
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="search-box">
+                    <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="search-input" placeholder="Search">
+                </div>
+
+                <!-- Tasks Navigation -->
+                <nav class="nav-section">
+                    <h3 class="section-title">TASKS</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item active" data-view="today" id="nav-today">
+                            <a href="#">
+                                <span class="nav-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                                    </svg>
+                                </span>
+                                <span class="nav-label">Today</span>
+                                <span class="badge" id="sidebar-today-count">5</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-view="upcoming" id="nav-upcoming">
+                            <a href="#">
+                                <span class="nav-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="13 17 18 12 13 7"></polyline>
+                                        <polyline points="6 17 11 12 6 7"></polyline>
+                                    </svg>
+                                </span>
+                                <span class="nav-label">Upcoming</span>
+                                <span class="badge" id="sidebar-upcoming-count">12</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-view="past-due" id="nav-past-due">
+                            <a href="#">
+                                <span class="nav-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                </span>
+                                <span class="nav-label">Past Due</span>
+                                <span class="badge" id="sidebar-past-due-count">2</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-view="completed" id="nav-completed">
+                            <a href="#">
+                                <span class="nav-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="9 11 12 14 22 4"></polyline>
+                                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                    </svg>
+                                </span>
+                                <span class="nav-label">Completed</span>
+                                <span class="badge" id="sidebar-completed-count">0</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <hr class="sidebar-divider">
+
+                <!-- Lists Navigation -->
+                <nav class="nav-section">
+                    <h3 class="section-title">LISTS</h3>
+                    <ul class="nav-list" id="lists-nav-list">
+                        <li class="nav-item" data-list="Personal">
+                            <a href="#">
+                                <span class="color-dot color-red"></span>
+                                <span class="nav-label">Personal</span>
+                                <span class="badge">3</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-list="Work">
+                            <a href="#">
+                                <span class="color-dot color-cyan"></span>
+                                <span class="nav-label">Work</span>
+                                <span class="badge">6</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-list="List 1">
+                            <a href="#">
+                                <span class="color-dot color-yellow"></span>
+                                <span class="nav-label">List 1</span>
+                                <span class="badge">3</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <form class="inline-create-form list-create-form" id="add-list-form" hidden>
+                        <div class="list-input-row">
+                            <span class="color-dot" id="new-list-color-preview"></span>
+                            <input type="text" id="new-list-input" placeholder="List name..." maxlength="24">
+                            <button type="submit" class="inline-submit-btn" aria-label="Save list" title="Save (Enter)">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="9 10 4 15 9 20"></polyline>
+                                    <path d="M20 4v7a4 4 0 0 1-4 4H4"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="inline-form-error" id="list-error" role="alert" hidden></p>
+                        <div class="list-color-palette" id="list-color-palette" aria-label="Select list color"></div>
+                    </form>
+                    <button class="add-inline-btn" id="add-list-btn" type="button">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2" stroke-linecap="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        <span>Add New List</span>
+                    </button>
+                </nav>
+
+                <hr class="sidebar-divider">
+
+                <!-- Tags Section -->
+                <div class="nav-section">
+                    <h3 class="section-title">TAGS</h3>
+                    <div class="tags-container" id="sidebar-tags">
+                        <span class="tag tag-teal" data-tag="Tag 1" draggable="true">Tag 1</span>
+                        <span class="tag tag-pink" data-tag="Tag 2" draggable="true">Tag 2</span>
+                        <button class="tag tag-add" id="sidebar-add-tag-btn" type="button">+ Add Tag</button>
+                    </div>
+                    <form class="inline-create-form" id="add-sidebar-tag-form" hidden>
+                        <div class="list-input-row">
+                            <input type="text" id="new-sidebar-tag-input" placeholder="Tag name..." maxlength="18">
+                            <button type="submit" class="inline-submit-btn" aria-label="Save tag" title="Save (Enter)">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="9 10 4 15 9 20"></polyline>
+                                    <path d="M20 4v7a4 4 0 0 1-4 4H4"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="inline-form-error" id="tag-error" role="alert" hidden></p>
+                    </form>
+                </div>
+
+                <div class="sidebar-footer">
+                    <button type="button" class="theme-toggle-btn" id="theme-toggle" role="switch" aria-checked="false"
+                        aria-label="Toggle dark or light mode">
+                        <span class="theme-toggle-info">
+                            <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                            <span id="theme-toggle-label">Light Mode</span>
+                        </span>
+                        <span class="theme-switch-track" aria-hidden="true">
+                            <span class="theme-switch-thumb"></span>
+                        </span>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Center Panel: Today Tasks -->
+            <section class="tasks-main">
+                <header class="tasks-header">
+                    <button class="icon-btn reopen-menu-btn" id="menu-reopen" aria-label="Open Menu" hidden>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round">
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                    <h2 id="main-view-title">Today</h2>
+                    <div class="tasks-total" title="Total tasks">
+                        <svg class="tasks-total-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                        <span class="tasks-count" id="main-today-count">5</span>
+                    </div>
+                </header>
+
+                <div class="tasks-toolbar">
+                    <div class="sort-control">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="6" x2="16" y2="6"></line>
+                            <line x1="4" y1="12" x2="13" y2="12"></line>
+                            <line x1="4" y1="18" x2="10" y2="18"></line>
+                            <polyline points="15 15 18 18 21 15"></polyline>
+                            <line x1="18" y1="9" x2="18" y2="18"></line>
+                        </svg>
+                        <label for="task-sort-select">Sort by</label>
+                        <div class="select-wrapper">
+                            <select id="task-sort-select" aria-label="Sort tasks">
+                                <option value="default">Default</option>
+                                <option value="date-asc">Due Date (Ascending)</option>
+                                <option value="date-desc">Due Date (Descending)</option>
+                                <option value="alpha">Alphabetical</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="button" class="add-task-btn" id="add-task-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.4" stroke-linecap="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        <span>Add New Task</span>
+                    </button>
+                </div>
+
+                <ul class="task-list" id="task-list">
+                    <li class="task-item" data-id="1">
+                        <div class="task-row-main">
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="task-checkbox" data-id="1">
+                                <span class="custom-checkbox"></span>
+                                <span class="task-title">Research content ideas</span>
+                            </label>
+                            <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </li>
+                    <li class="task-item" data-id="2">
+                        <div class="task-row-main">
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="task-checkbox" data-id="2">
+                                <span class="custom-checkbox"></span>
+                                <span class="task-title">Create a database of guest authors</span>
+                            </label>
+                            <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </li>
+                    <li class="task-item selected" data-id="3">
+                        <div class="task-row-main">
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="task-checkbox" data-id="3">
+                                <span class="custom-checkbox"></span>
+                                <span class="task-title">Renew driver's license</span>
+                            </label>
+                            <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="task-meta-row">
+                            <span class="meta-chip">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                <span>22-03-22</span>
+                            </span>
+                            <span class="meta-divider"></span>
+                            <span class="meta-chip">
+                                <span class="meta-count-badge">1</span>
+                                <span>Subtasks</span>
+                            </span>
+                            <span class="meta-divider"></span>
+                            <span class="meta-chip">
+                                <span class="meta-color-dot color-red"></span>
+                                <span>Personal</span>
+                            </span>
+                        </div>
+                    </li>
+                    <li class="task-item" data-id="4">
+                        <div class="task-row-main">
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="task-checkbox" data-id="4">
+                                <span class="custom-checkbox"></span>
+                                <span class="task-title">Consult accountant</span>
+                            </label>
+                            <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="task-meta-row">
+                            <span class="meta-chip">
+                                <span class="meta-color-dot color-yellow"></span>
+                                <span>List</span>
+                            </span>
+                            <span class="meta-divider"></span>
+                            <span class="meta-chip">
+                                <span class="meta-count-badge">3</span>
+                                <span>Subtasks</span>
+                            </span>
+                        </div>
+                    </li>
+                    <li class="task-item" data-id="5">
+                        <div class="task-row-main">
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="task-checkbox" data-id="5">
+                                <span class="custom-checkbox"></span>
+                                <span class="task-title">Print business card</span>
+                            </label>
+                            <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Undo Toast Notification -->
+                <div class="undo-toast" id="undo-toast" role="status" aria-live="polite" hidden>
+                    <span id="undo-toast-text">Task deleted</span>
+                    <button type="button" class="undo-btn" id="undo-btn">Undo</button>
+                </div>
+            </section>
+
+            <!-- Mobile/Tablet Drawer Backdrop -->
+            <div class="mobile-backdrop" id="mobile-backdrop" hidden></div>
+
+            <!-- Right Panel: Task Details -->
+            <aside class="task-detail" id="task-detail">
+                <div class="detail-top">
+                    <div class="detail-header-row">
+                        <h3 class="detail-heading">Task Overview</h3>
+                        <button type="button" class="icon-btn detail-close-btn" id="detail-close-btn"
+                            aria-label="Close Task Details">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <input type="text" class="detail-title-input" id="detail-title" value="Renew driver's license"
+                        aria-label="Task Title">
+                    <p class="inline-form-error detail-title-error" id="detail-title-error" role="alert" hidden></p>
+
+                    <textarea class="detail-desc-input" id="detail-description" placeholder="Description"
+                        rows="4"></textarea>
+
+                    <div class="detail-meta-grid">
+                        <label for="detail-list">List</label>
+                        <div class="select-wrapper">
+                            <select id="detail-list">
+                                <option value="Personal" selected>Personal</option>
+                                <option value="Work">Work</option>
+                                <option value="List">List</option>
+                            </select>
+                        </div>
+
+                        <label for="detail-due-date">Due date</label>
+                        <div class="due-date-field">
+                            <input type="date" class="detail-date-input" id="detail-due-date">
+                        </div>
+
+                        <label>Tags</label>
+                        <div class="detail-tags" id="detail-tags">
+                            <span class="tag tag-teal">Tag 1</span>
+                            <button class="tag tag-add" type="button">+ Add Tag</button>
+                        </div>
+                    </div>
+
+                    <div class="subtasks-section">
+                        <h4 class="subtasks-heading">Subtasks:</h4>
+                        <form class="add-subtask-bar" id="add-subtask-form">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            <input type="text" id="new-subtask-input" placeholder="Add New Subtask">
+                        </form>
+                        <p class="inline-form-error subtask-error" id="subtask-error" role="alert" hidden></p>
+
+                        <ul class="subtask-list" id="subtask-list">
+                            <li class="subtask-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="custom-checkbox"></span>
+                                    <span class="subtask-text">Subtask</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="detail-actions">
+                    <button type="button" class="btn btn-delete" id="delete-task-btn">Delete Task</button>
+                    <button type="button" class="btn btn-save" id="save-task-btn">Save changes</button>
+                </div>
+            </aside>
+
+            <!-- New Task Modal -->
+            <div class="task-modal-backdrop" id="task-modal-backdrop" hidden>
+                <div class="task-modal" role="dialog" aria-modal="true" aria-labelledby="task-modal-heading">
+                    <div class="task-modal-header">
+                        <h3 id="task-modal-heading">Add New Task</h3>
+                        <button type="button" class="icon-btn" id="close-task-modal-btn" aria-label="Close Modal">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <form id="new-task-modal-form" novalidate>
+                        <div class="modal-field">
+                            <label for="modal-task-title">Task Title</label>
+                            <input type="text" class="detail-title-input" id="modal-task-title"
+                                placeholder="What needs to be done?" required>
+                            <p class="inline-form-error" id="modal-title-error" role="alert" hidden></p>
+                        </div>
+
+                        <div class="modal-field">
+                            <label for="modal-task-desc">Description</label>
+                            <textarea class="detail-desc-input" id="modal-task-desc"
+                                placeholder="Add details or notes..." rows="3"></textarea>
+                        </div>
+
+                        <div class="detail-meta-grid modal-meta-grid">
+                            <label for="modal-task-list">List</label>
+                            <div class="select-wrapper">
+                                <select id="modal-task-list">
+                                    <option value="">None</option>
+                                    <option value="Personal">Personal</option>
+                                    <option value="Work">Work</option>
+                                    <option value="List 1">List 1</option>
+                                </select>
+                            </div>
+
+                            <label for="modal-task-due-date">Due date</label>
+                            <div class="due-date-field">
+                                <input type="date" class="detail-date-input" id="modal-task-due-date">
+                            </div>
+
+                            <label>Tags</label>
+                            <div class="detail-tags" id="modal-task-tags"></div>
+                        </div>
+
+                        <div class="detail-actions modal-actions">
+                            <button type="button" class="btn btn-delete" id="cancel-task-modal-btn">Cancel</button>
+                            <button type="submit" class="btn btn-save">Create Task</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Delete Confirmation Modal -->
+            <div class="task-modal-backdrop" id="delete-modal-backdrop" hidden>
+                <div class="task-modal confirm-modal" role="alertdialog" aria-modal="true"
+                    aria-labelledby="delete-modal-title" aria-describedby="delete-modal-message">
+                    <div class="task-modal-header">
+                        <h3 id="delete-modal-title">Delete Task?</h3>
+                        <button type="button" class="icon-btn" id="close-delete-modal-btn" aria-label="Close Dialog">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="confirm-modal-message" id="delete-modal-message">Are you sure you want to delete this
+                        task?</p>
+                    <div class="detail-actions modal-actions">
+                        <button type="button" class="btn btn-delete" id="cancel-delete-modal-btn">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="confirm-delete-modal-btn">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
